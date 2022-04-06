@@ -1,0 +1,128 @@
+---
+name: Diego
+surname: Aguilar-Ramirez
+position: "Early-Career Research Fellow"
+address: "University of Oxford, UK"
+phone: +44 738 0447770
+email: "diego.aguilar-ramirez@ndph.ox.ac.uk"
+github: "diegojehu"
+date: "`r format(Sys.time(), '%B %Y')`"
+aboutme: "Medic, clinical epidemiologist, and population health scientist with a strong interest in cardiometabolic diseases in the Mexican population."
+output: 
+  vitae::awesomecv
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+library(tidyverse)
+```
+
+# Employment
+```{r employment}
+jobs <- do.call("bind_rows",
+  rorcid::orcid_employments("0000-0003-2298-3768")$`0000-0003-2298-3768`$`affiliation-group`$summaries
+)
+
+jobs %>%
+  mutate(`employment-summary.end-date.year.value` = replace(`employment-summary.end-date.year.value`, is.na(`employment-summary.end-date.year.value`), "Present")) %>%
+  detailed_entries(
+    with = `employment-summary.role-title`,
+    when = glue::glue("{`employment-summary.start-date.year.value`} - {`employment-summary.end-date.year.value`}"),
+    what = `employment-summary.organization.name`,
+    where = `employment-summary.organization.address.city`
+  )
+```
+
+# Education
+```{r education}
+edu <- do.call("bind_rows",
+  rorcid::orcid_educations("0000-0003-2298-3768")$`0000-0003-2298-3768`$`affiliation-group`$summaries
+)
+
+edu %>%
+  mutate(`education-summary.end-date.year.value` = replace(`education-summary.end-date.year.value`, is.na(`education-summary.end-date.year.value`), "Present")) %>%
+  detailed_entries(
+    with = `education-summary.role-title`,
+    when = glue::glue("{`education-summary.start-date.year.value`} - {`education-summary.end-date.year.value`}"),
+    what = `education-summary.organization.name`,
+    where = `education-summary.organization.address.city`
+  )
+```
+
+# Scholarships & Awards
+```{r awards}
+library(tibble)
+tribble(
+  ~ Title, ~ Institution, ~ Year, ~ Where,
+  "Early-Career Research Fellowship", "Nuffield Department of Population Health", "2022", "Oxford, UK",
+  "BHF CRE Graduate Studentship - Cardiovascular Population Health Sciences", "Oxford British Heart Foundation Centre for Research Excellence", "2018", "Oxford, UK",
+  "Departmental Scholarship - DPhil Population Health", "Nuffield Department of Population Health", "2018", "Oxford, UK",
+  "Departmental Scholarship - MSc Global Health Science", "Nuffield Department of Population Health", "2017", "Oxford, UK",
+  "Community Service in Medicine Award", "Universidad Panamericana, School of Medicine", "2015", "Mexico City, MX",
+  "CENEVAL Award for Excellent Performance in Medical School", "National Centre for the Evaluation of Higher Education", "2015", "Mexico City, MX",
+  "Scholarship", "Universidad Panamericana, School of Medicine", "2009", "Mexico City, MX",
+) %>% 
+  detailed_entries(
+    with = Title,
+    when = Year,
+    what = Institution,
+    where = Where)
+```
+
+# Publications
+```{r publications}
+scholar::get_publications("J8t2FMAAAAAJ") %>%
+  arrange(., desc(year)) %>%
+  filter(year > 2017, !journal %in% c("medRxiv")) %>%
+  detailed_entries(
+    what = title,
+    when = year,
+    with = author,
+    where = journal
+  )
+```
+
+# Data Analysis Skills & Experience
+```{r data_skills}
+tribble(
+ ~Year, ~Title, ~Desc,
+ 2022, "Unix Shell", "Within the high-performance Biomedical Research Computing (BMRC) system",
+ 2022, "Git", "Version control with local and remote repositories",
+ 2020, "RMarkdown", "Development of reproducible reports",
+ 2018, "R", "Data analysis, statistical modelling, and visualization",
+ 2018, "SAS", "Data analysis, statistical modelling, and visualization",
+ 2017, "STATA", "Data analysis and visualization"
+) %>%
+ brief_entries(
+   Desc,
+   Title,
+   Year
+ )
+```
+
+# Teaching
+
+* Teaching assistant - MSc in Global Health Science and Epidemiology
+```{r}
+#tribble(
+#  ~Year, ~Title, ~Desc,
+#  1903, "Physics", "Awarded for her work on radioactivity with Pierre Curie and Henri Becquerel",
+#  1911, "Chemistry", "Awarded for the discovery of radium and polonium"
+#) %>% 
+#  brief_entries(
+#    glue::glue("Nobel Prize in {Title}"),
+#    Year, 
+#    Desc
+#  )
+```
+
+
+```{r}
+#library(dplyr)
+#knitr::write_bib(c("vitae", "tibble"), "packages.bib")
+
+#bibliography_entries("packages.bib") %>%
+ # arrange(desc(author$family), issued)
+```
+
