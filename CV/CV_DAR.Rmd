@@ -101,9 +101,12 @@ tribble(
  )
 ```
 
-# Teaching
+# Teaching experience
+* **Teaching assistant** - MSc in Global Health Science and Epidemiology **(2019 - Present)**  
+* Preparing for Learning and Teaching at Oxford (**2019**)  
 
-* Teaching assistant - MSc in Global Health Science and Epidemiology
+# Mentoring
+Mentor at the UNIQ+ Digital Program - University of Oxford  (**2020 - Present**)
 ```{r}
 #tribble(
 #  ~Year, ~Title, ~Desc,
