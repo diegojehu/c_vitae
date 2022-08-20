@@ -6,6 +6,7 @@ address: "University of Oxford, UK"
 phone: +44 738 0447770
 email: "diego.aguilar-ramirez@ndph.ox.ac.uk"
 github: "diegojehu"
+site: ctsu.ox.ac.uk/team/diego-aguilar-ramirez
 date: "`r format(Sys.time(), '%B %Y')`"
 aboutme: "Medic, clinical epidemiologist, and population health scientist with a strong interest in cardiometabolic diseases in the Mexican population."
 output: 
@@ -89,6 +90,7 @@ tribble(
  ~Year, ~Title, ~Desc,
  2022, "Unix Shell", "Within the high-performance Biomedical Research Computing (BMRC) system",
  2022, "Git", "Version control with local and remote repositories",
+ 2022, "Python", "Workflow development for genome-wide bioinformatics analyses",
  2020, "RMarkdown", "Development of reproducible reports",
  2018, "R", "Data analysis, statistical modelling, and visualization",
  2018, "SAS", "Data analysis, statistical modelling, and visualization",
@@ -101,8 +103,12 @@ tribble(
  )
 ```
 
-# Teaching experience
+# Research Student Supervision
+* Currently involved in direct supervision of 2 post-graduate students (1 MSc & 1 DPhil)
+
+# Teaching Experience & Training
 * **Teaching assistant** - MSc in Global Health Science and Epidemiology **(2019 - Present)**  
+* **Lecturer** - Practical Statistics for Epidemiology Using R **(2021 - Present)**  
 * Preparing for Learning and Teaching at Oxford (**2019**)  
 
 # Mentoring
